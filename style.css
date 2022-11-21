@@ -17,12 +17,15 @@ nav {
 
 #container {
     background-color: rgb(108, 128, 96);
-    height: 300px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #btns {
     padding: 20px;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 #btns button {
