@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    background-color: rgb(108, 128, 96);
+}
+
+nav {
+    padding: 10px;
+    background-color: rgb(146, 173, 131);
+    font-size: 22px;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+}
+
+#container {
+    background-color: rgb(108, 128, 96);
+    height: 300px;
+}
+
+#btns {
+    padding: 20px;
+}
+
+#newPoke,
+#resetPoke {
+    height: 30px;
+    width: 100px;
+}
+
+input {
+    height: 20px;
+    width: 200px;
+    text-align: center;
+}
