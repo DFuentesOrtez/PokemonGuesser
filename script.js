@@ -37,6 +37,7 @@ function randomNum() {
 let randNum;
 const newPoke = document.querySelector("#newPoke");
 newPoke.addEventListener("click", function () {
+    answerContainer.replaceChildren();
     if (allPoke.length == 0) {
         container.replaceChildren();
         var fillerImg = document.createElement("img");
@@ -53,9 +54,11 @@ newPoke.addEventListener("click", function () {
 
 const submit = document.querySelector("#submit");
 const answerContainer = document.querySelector("#answerContainer");
+var guess = document.querySelector("#guess");
 submit.addEventListener("click", function () {
-    var guess = document.querySelector("#guess");
-    if ((guess.value).toUpperCase() == currentPoke.toUpperCase()) {
+    var myGuess = guess.value;
+    guess.value = "";
+    if ((myGuess).toUpperCase() == currentPoke.toUpperCase()) {
         answerContainer.replaceChildren();
         var answer = document.createElement("p");
         answer.textContent = "Correct!"
@@ -69,6 +72,14 @@ submit.addEventListener("click", function () {
         answer.setAttribute("style", "font-size: 22px;");
         answerContainer.appendChild(answer);
     }
+});
+
+const restart = document.querySelector("#restart");
+restart.addEventListener("click", function () {
+    container.replaceChildren();
+    answerContainer.replaceChildren();
+    guess.value = "";
+    allPoke = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9];
 });
 
 
