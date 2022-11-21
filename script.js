@@ -1,4 +1,6 @@
 const container = document.querySelector("#container");
+var currentPoke;
+var imgName = document.createElement("p");
 
 function showImage(src) {
     container.replaceChildren();
@@ -6,10 +8,20 @@ function showImage(src) {
     img.src = src;
     img.width = 300;
     img.height = 300;
-    // img.alt = "Image of the Pokemon: " + getImgName(src);
-    img.setAttribute('style', 'margin-left: auto; margin-right: auto');
+    img.setAttribute("style", "margin-left: auto; margin-right: auto");
     container.appendChild(img);
+
+    // var imgName = document.createElement("p");
+    imgName.textContent = getImgName(src);
+    imgName.setAttribute("style", "font-size: 22px; width: 200px; margin-left: auto; margin-right: auto;");
+    // container.appendChild(imgName);
+    currentPoke = imgName.textContent;
 }
+
+const reveal = document.querySelector("#reveal");
+reveal.addEventListener("click", function () {
+    container.appendChild(imgName);
+});
 
 function getImgName(src) {
     var imgName = src.slice(7);
@@ -38,6 +50,27 @@ newPoke.addEventListener("click", function () {
         allPoke.splice(randNum, 1);
     }
 });
+
+const submit = document.querySelector("#submit");
+const answerContainer = document.querySelector("#answerContainer");
+submit.addEventListener("click", function () {
+    var guess = document.querySelector("#guess");
+    if ((guess.value).toUpperCase() == currentPoke.toUpperCase()) {
+        answerContainer.replaceChildren();
+        var answer = document.createElement("p");
+        answer.textContent = "Correct!"
+        answer.setAttribute("style", "font-size: 22px;");
+        answerContainer.appendChild(answer);
+    }
+    else {
+        answerContainer.replaceChildren();
+        var answer = document.createElement("p");
+        answer.textContent = "Wrong!"
+        answer.setAttribute("style", "font-size: 22px;");
+        answerContainer.appendChild(answer);
+    }
+});
+
 
 let poke1 = document.createElement("img");
 poke1.value = "images/bulbasaur.png";
