@@ -38,7 +38,6 @@ function randomNum() {
 let randNum;
 let counter = 0;
 let counterTotal;
-// counterTotal = allPoke.length;
 const pokeProgress = document.querySelector("#pokeProgress");
 // const pokeBar = document.querySelector("#pokeBar");
 const newPoke = document.querySelector("#newPoke");
@@ -78,19 +77,52 @@ submit.addEventListener("click", function () {
         ((currentPoke.toUpperCase() == "nidoran(f)".toUpperCase() || currentPoke.toUpperCase() == "nidoran(m)".toUpperCase()) && (myGuess.toUpperCase() == "nidoran".toUpperCase()))) {
         answerContainer.replaceChildren();
         var answer = document.createElement("p");
-        answer.textContent = "Correct!"
         answer.setAttribute("style", "font-size: 22px;");
+        function show() {
+            answer.textContent = "Correct!";
+            setTimeout(hide, 700);
+        }
+        function hide() {
+            answer.textContent = "";
+        }
+
+        show();
         answerContainer.appendChild(answer);
 
+
+        randNum = randomNum();
+        showImage(allPoke[randNum].value);
+        allPoke.splice(randNum, 1);
+
+        pokeProgress.replaceChildren();
+        var pokeAmount = document.createElement("p");
+        counter++;
+        pokeAmount.textContent = counter + "/" + counterTotal;
+        pokeAmount.setAttribute("style", "font-size: 20px; margin-left: auto; margin-right: auto;");
+        pokeProgress.appendChild(pokeAmount);
     }
     else {
         answerContainer.replaceChildren();
         var answer = document.createElement("p");
-        answer.textContent = "Wrong!"
         answer.setAttribute("style", "font-size: 22px;");
+        function show() {
+            answer.textContent = "Wrong!";
+            setTimeout(hide, 700);
+        }
+        function hide() {
+            answer.textContent = "";
+        }
+        show();
         answerContainer.appendChild(answer);
     }
 });
+
+// document.getElementById("guess").addEventListener("keyup", function (event) {
+//     event.preventDefault();
+//     if (event.keycode === 13) {
+//         submit.click();
+//     }
+// });
 
 const restart = document.querySelector("#restart");
 restart.addEventListener("click", function () {
