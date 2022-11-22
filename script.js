@@ -85,7 +85,6 @@ submit.addEventListener("click", function () {
         (currentPoke.toUpperCase() == "farfetchd".toUpperCase() && (myGuess.toUpperCase() == "farfetch'd".toUpperCase())) ||
         ((currentPoke.toUpperCase() == "nidoran(f)".toUpperCase() || currentPoke.toUpperCase() == "nidoran(m)".toUpperCase()) && (myGuess.toUpperCase() == "nidoran".toUpperCase()))) {
         //IF GUESS IS CORRECT
-
         answerContainer.replaceChildren();
         //DISPLAYS CORRECT AND FADES
         var answer = document.createElement("p");
@@ -101,17 +100,28 @@ submit.addEventListener("click", function () {
         answerContainer.appendChild(answer);
 
         //GENERATES NEW POKEMON
-        randNum = randomNum();
-        showImage(allPoke[randNum].value);
-        allPoke.splice(randNum, 1);
-        //COUNTER INCREMENTS
-        pokeProgress.replaceChildren();
-        var pokeAmount = document.createElement("p");
-        counter++;
-        pokeAmount.textContent = counter + "/" + counterTotal;
-        pokeAmount.setAttribute("style", "font-size: 20px; margin-left: auto; margin-right: auto;");
-        pokeProgress.appendChild(pokeAmount);
+        if (allPoke.length > 0) {
+            randNum = randomNum();
+            showImage(allPoke[randNum].value);
+            allPoke.splice(randNum, 1);
+            //COUNTER INCREMENTS
+            pokeProgress.replaceChildren();
+            var pokeAmount = document.createElement("p");
+            counter++;
+            pokeAmount.textContent = counter + "/" + counterTotal;
+            pokeAmount.setAttribute("style", "font-size: 20px; margin-left: auto; margin-right: auto;");
+            pokeProgress.appendChild(pokeAmount);
+        }
+        else {
+            //DISPLAYS IMAGE SHOWING THAT THERE ARE NO POKEMON LEFT
+            container.replaceChildren();
+            var fillerImg = document.createElement("img");
+            fillerImg.src = "images/pokeball.png";
+            fillerImg.setAttribute("style", "width: 300px; height: 300px; margin-left: auto; margin-right: auto");
+            container.appendChild(fillerImg);
+        }
     }
+
     //IF GUESS IS WRONG
     else {
         answerContainer.replaceChildren();
