@@ -2,35 +2,38 @@ const container = document.querySelector("#container");
 var currentPoke;
 var imgName = document.createElement("p");
 
+//DISPLAYS IMAGE OF POKEMON AND SAVES THE NAME
 function showImage(src) {
+    //REMOVES PREVIOUS IMAGE/NAME
     container.replaceChildren();
+    //DISPLAYS NEW IMAGE
     var img = document.createElement("img");
     img.src = src;
     img.width = 300;
     img.height = 300;
     img.setAttribute("style", "margin-left: auto; margin-right: auto");
     container.appendChild(img);
-
-    // var imgName = document.createElement("p");
+    //SAVES NAME OF POKEMON
     imgName.textContent = getImgName(src);
     imgName.setAttribute("style", "font-size: 22px; width: 200px; margin-left: auto; margin-right: auto;");
-    // container.appendChild(imgName);
     currentPoke = imgName.textContent;
 }
 
+//REVEALS NAME OF CURRENT POKEMON ON PRESS
 const reveal = document.querySelector("#reveal");
 reveal.addEventListener("click", function () {
     answerContainer.replaceChildren();
     container.appendChild(imgName);
 });
-
+//GRABS THE NAME OF THE CURRENT POKEMON
 function getImgName(src) {
+    //GETS SEPARATES NAME FROM THE IMAGE'S FILEPATH + EXTENSION
     var imgName = src.slice(7);
     imgName = imgName.slice(0, imgName.length - 4);
     imgName = imgName.charAt(0).toUpperCase() + imgName.slice(1);
     return imgName;
 }
-
+//GENERATES RANDOM NUMBER. USED FOR GETTING RANDOM INDEX FROM ARRAY
 function randomNum() {
     return Math.floor(Math.random() * allPoke.length);
 }
@@ -39,11 +42,12 @@ let randNum;
 let counter = 0;
 let counterTotal;
 const pokeProgress = document.querySelector("#pokeProgress");
-// const pokeBar = document.querySelector("#pokeBar");
 const newPoke = document.querySelector("#newPoke");
+//ON PRESS, GENERATES NEW POKEMON AND REPLACES CURRENT(IF ANY) POKEMON IF THERE ARE ANY LEFT IN ARRAY
 newPoke.addEventListener("click", function () {
     answerContainer.replaceChildren();
     if (allPoke.length == 0) {
+        //DISPLAYS IMAGE SHOWING THAT THERE ARE NO POKEMON LEFT
         container.replaceChildren();
         var fillerImg = document.createElement("img");
         fillerImg.src = "images/pokeball.png";
@@ -51,31 +55,39 @@ newPoke.addEventListener("click", function () {
         container.appendChild(fillerImg);
     }
     else {
+        //GETS RANDOM POKEMON AND CALLS SHOWIMAGE TO DISPLAY IT
         randNum = randomNum();
         showImage(allPoke[randNum].value);
         allPoke.splice(randNum, 1);
 
         pokeProgress.replaceChildren();
+        //COUNTER BASED ON HOW MANY POKEMON YOU HAVE GUESSED OUT OF THE TOTAL
         var pokeAmount = document.createElement("p");
         counter++;
         pokeAmount.textContent = counter + "/" + counterTotal;
         pokeAmount.setAttribute("style", "font-size: 20px; margin-left: auto; margin-right: auto;");
         pokeProgress.appendChild(pokeAmount);
-        // document.getElementById("pokeProgress").style.backgroundColor = "white";
     }
 });
 
 const submit = document.querySelector("#submit");
 const answerContainer = document.querySelector("#answerContainer");
 var guess = document.querySelector("#guess");
+//ON PRESS, CHECKS IF THE CURRENT GUESS IS CORRECT OR WRONG. 
+//IF CORRECT, GENERATE NEW POKEMON AND SAY CORRECT, IF WRONG, SAYS WRONG
 submit.addEventListener("click", function () {
     var myGuess = guess.value;
     guess.value = "";
+    //CHECKS IF GUESS MATCHES CURRENT POKEMON
     if (myGuess.toUpperCase() == currentPoke.toUpperCase() ||
+        //CASES FOR POKEMON WHOSE NAMES MAY BE SPELLED DIFFERENTLY. LIKE NAMES WITH PUNCTUATION
         (currentPoke.toUpperCase() == "mrmime".toUpperCase() && (((myGuess.toUpperCase() == "mr. mime".toUpperCase())) || (myGuess.toUpperCase() == "mr mime".toUpperCase()))) ||
         (currentPoke.toUpperCase() == "farfetchd".toUpperCase() && (myGuess.toUpperCase() == "farfetch'd".toUpperCase())) ||
         ((currentPoke.toUpperCase() == "nidoran(f)".toUpperCase() || currentPoke.toUpperCase() == "nidoran(m)".toUpperCase()) && (myGuess.toUpperCase() == "nidoran".toUpperCase()))) {
+        //IF GUESS IS CORRECT
+
         answerContainer.replaceChildren();
+        //DISPLAYS CORRECT AND FADES
         var answer = document.createElement("p");
         answer.setAttribute("style", "font-size: 22px;");
         function show() {
@@ -85,15 +97,14 @@ submit.addEventListener("click", function () {
         function hide() {
             answer.textContent = "";
         }
-
         show();
         answerContainer.appendChild(answer);
 
-
+        //GENERATES NEW POKEMON
         randNum = randomNum();
         showImage(allPoke[randNum].value);
         allPoke.splice(randNum, 1);
-
+        //COUNTER INCREMENTS
         pokeProgress.replaceChildren();
         var pokeAmount = document.createElement("p");
         counter++;
@@ -101,8 +112,10 @@ submit.addEventListener("click", function () {
         pokeAmount.setAttribute("style", "font-size: 20px; margin-left: auto; margin-right: auto;");
         pokeProgress.appendChild(pokeAmount);
     }
+    //IF GUESS IS WRONG
     else {
         answerContainer.replaceChildren();
+        //DISPLAYS WRONG AND FADES
         var answer = document.createElement("p");
         answer.setAttribute("style", "font-size: 22px;");
         function show() {
@@ -117,13 +130,16 @@ submit.addEventListener("click", function () {
     }
 });
 
-// document.getElementById("guess").addEventListener("keyup", function (event) {
-//     event.preventDefault();
-//     if (event.keycode === 13) {
-//         submit.click();
-//     }
-// });
+//PRESSING ENTER KEY IN TEXT INPUT TRIGGERS SUBMIT BUTTON
+document.getElementById("guess").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("submit").click();
+    }
+})
 
+//RESTART BUTTON. ON PRESS RESETS ALL VALUES. IMAGE REMOVED, COUNTER 0, ARRAY REFILLED, ETC.
+//AS IF YOU REFRESHED THE PAGE.
 const restart = document.querySelector("#restart");
 restart.addEventListener("click", function () {
     container.replaceChildren();
@@ -143,7 +159,9 @@ restart.addEventListener("click", function () {
         poke141, poke142, poke143, poke144, poke145, poke146, poke147, poke148, poke149, poke150, poke151];
 });
 
-
+//
+// LONG LIST OF POKEMON
+//
 let poke1 = document.createElement("img");
 poke1.value = "images/bulbasaur.png";
 
@@ -597,7 +615,7 @@ poke150.value = "images/mewtwo.png";
 let poke151 = document.createElement("img");
 poke151.value = "images/mew.png";
 
-
+//ARRAY OF ALL POKEMON
 var allPoke = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9, poke10, poke11, poke12, poke13, poke14, poke15, poke16, poke17, poke18, poke19,
     poke20, poke21, poke22, poke23, poke24, poke25, poke26, poke27, poke28, poke29, poke30, poke31, poke32, poke33, poke34, poke35, poke36, poke37,
     poke38, poke39, poke40, poke41, poke42, poke43, poke44, poke45, poke46, poke47, poke48, poke49, poke50, poke51, poke52, poke53, poke54, poke55,
@@ -607,5 +625,5 @@ var allPoke = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9, po
     poke109, poke110, poke111, poke112, poke113, poke114, poke115, poke116, poke117, poke118, poke119, poke120, poke121, poke122, poke123, poke124,
     poke125, poke126, poke127, poke128, poke129, poke130, poke131, poke132, poke133, poke134, poke135, poke136, poke137, poke138, poke139, poke140,
     poke141, poke142, poke143, poke144, poke145, poke146, poke147, poke148, poke149, poke150, poke151];
-
+//TOTAL AMOUNT OF POKEMON
 counterTotal = allPoke.length;
