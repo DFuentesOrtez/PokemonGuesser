@@ -37,6 +37,8 @@ function randomNum() {
 
 let randNum;
 let counter = 0;
+let counterTotal;
+// counterTotal = allPoke.length;
 const pokeProgress = document.querySelector("#pokeProgress");
 // const pokeBar = document.querySelector("#pokeBar");
 const newPoke = document.querySelector("#newPoke");
@@ -57,7 +59,7 @@ newPoke.addEventListener("click", function () {
         pokeProgress.replaceChildren();
         var pokeAmount = document.createElement("p");
         counter++;
-        pokeAmount.textContent = counter + "/151";
+        pokeAmount.textContent = counter + "/" + counterTotal;
         pokeAmount.setAttribute("style", "font-size: 20px; margin-left: auto; margin-right: auto;");
         pokeProgress.appendChild(pokeAmount);
         // document.getElementById("pokeProgress").style.backgroundColor = "white";
@@ -573,3 +575,5 @@ var allPoke = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9, po
     poke109, poke110, poke111, poke112, poke113, poke114, poke115, poke116, poke117, poke118, poke119, poke120, poke121, poke122, poke123, poke124,
     poke125, poke126, poke127, poke128, poke129, poke130, poke131, poke132, poke133, poke134, poke135, poke136, poke137, poke138, poke139, poke140,
     poke141, poke142, poke143, poke144, poke145, poke146, poke147, poke148, poke149, poke150, poke151];
+
+counterTotal = allPoke.length;
