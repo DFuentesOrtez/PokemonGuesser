@@ -5,6 +5,7 @@
 
 body {
     text-align: center;
+    /* background-color: rgb(22, 104, 72); */
     background-color: rgb(108, 128, 96);
 }
 
@@ -23,9 +24,24 @@ nav {
     justify-content: space-between;
 }
 
+#pokeProgress {
+    /* background-color: grey; */
+    height: 25px;
+    padding: 10px;
+}
+
+/* #newPoke:active {} */
+
+/* #newPoke:active #pokeBar {
+    width: 1%;
+    height: 30px;
+    background-color: green;
+} */
+
 #btns {
-    padding: 20px;
-    margin-top: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /* background-color: rgb(75, 75, 177); */
 }
 
 #btns button {
