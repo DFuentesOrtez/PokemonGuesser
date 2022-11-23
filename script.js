@@ -10,8 +10,6 @@ function showImage(src) {
     var img = document.createElement("img");
     img.src = src;
     mobilePokeImages(x, img);
-    // img.width = 300;
-    // img.height = 300;
     img.setAttribute("style", "margin-left: auto; margin-right: auto");
     container.appendChild(img);
     //SAVES NAME OF POKEMON
@@ -62,8 +60,7 @@ newPoke.addEventListener("click", function () {
         container.replaceChildren();
         var fillerImg = document.createElement("img");
         fillerImg.src = "images/pokeball.png";
-        mobileImages(x);
-        // fillerImg.setAttribute("style", "width: 300px; height: 300px; margin-left: auto; margin-right: auto");
+        mobileFillerImage(x, fillerImg);
         container.appendChild(fillerImg);
     }
     else {
@@ -81,8 +78,7 @@ newPoke.addEventListener("click", function () {
         pokeProgress.appendChild(pokeAmount);
     }
 });
-
-function mobileFillerImage(x) {
+function mobileFillerImage(x, fillerImg) {
     if (x.matches) {
         fillerImg.setAttribute("style", "width: 200px; height: 200px; margin-left: auto; margin-right: auto");
     }
