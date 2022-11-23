@@ -164,6 +164,16 @@ document.getElementById("guess").addEventListener("keypress", function (event) {
         document.getElementById("submit").click();
     }
 })
+mobileScrollTop(x);
+function mobileScrollTop(x) {
+    if (x.matches) {
+        document.getElementById("guess").addEventListener("click", function () {
+            window.scrollTo(0, 0);
+        });
+    }
+    else
+        ;
+}
 
 //RESTART BUTTON. ON PRESS RESETS ALL VALUES. IMAGE REMOVED, COUNTER 0, ARRAY REFILLED, ETC.
 //AS IF YOU REFRESHED THE PAGE.
