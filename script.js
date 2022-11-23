@@ -93,7 +93,9 @@ var guess = document.querySelector("#guess");
 //ON PRESS, CHECKS IF THE CURRENT GUESS IS CORRECT OR WRONG. 
 //IF CORRECT, GENERATE NEW POKEMON AND SAY CORRECT, IF WRONG, SAYS WRONG
 submit.addEventListener("click", function () {
-    var myGuess = guess.value;
+    var myGuess = (guess.value);
+    //REMOVES SPACES FROM THE INPUTTED GUESS TO AVOID AUTO-SPACES LEADING TO WRONG ANSWERS
+    myGuess = myGuess.replace(/\s+/g, "");
     guess.value = "";
     //CHECKS IF GUESS MATCHES CURRENT POKEMON
     if (myGuess.toUpperCase() == currentPoke.toUpperCase() ||
