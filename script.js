@@ -9,14 +9,25 @@ function showImage(src) {
     //DISPLAYS NEW IMAGE
     var img = document.createElement("img");
     img.src = src;
-    img.width = 300;
-    img.height = 300;
+    mobilePokeImages(x, img);
+    // img.width = 300;
+    // img.height = 300;
     img.setAttribute("style", "margin-left: auto; margin-right: auto");
     container.appendChild(img);
     //SAVES NAME OF POKEMON
     imgName.textContent = getImgName(src);
     imgName.setAttribute("style", "font-size: 22px; width: 200px; margin-left: auto; margin-right: auto;");
     currentPoke = imgName.textContent;
+}
+function mobilePokeImages(x, img) {
+    if (x.matches) {
+        img.width = 200;
+        img.height = 200;
+    }
+    else {
+        img.width = 300;
+        img.height = 300;
+    }
 }
 
 //REVEALS NAME OF CURRENT POKEMON ON PRESS
@@ -51,7 +62,8 @@ newPoke.addEventListener("click", function () {
         container.replaceChildren();
         var fillerImg = document.createElement("img");
         fillerImg.src = "images/pokeball.png";
-        fillerImg.setAttribute("style", "width: 300px; height: 300px; margin-left: auto; margin-right: auto");
+        mobileImages(x);
+        // fillerImg.setAttribute("style", "width: 300px; height: 300px; margin-left: auto; margin-right: auto");
         container.appendChild(fillerImg);
     }
     else {
@@ -69,6 +81,15 @@ newPoke.addEventListener("click", function () {
         pokeProgress.appendChild(pokeAmount);
     }
 });
+
+function mobileFillerImage(x) {
+    if (x.matches) {
+        fillerImg.setAttribute("style", "width: 200px; height: 200px; margin-left: auto; margin-right: auto");
+    }
+    else {
+        fillerImg.setAttribute("style", "width: 300px; height: 300px; margin-left: auto; margin-right: auto");
+    }
+}
 
 const submit = document.querySelector("#submit");
 const answerContainer = document.querySelector("#answerContainer");
@@ -637,3 +658,5 @@ var allPoke = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9, po
     poke141, poke142, poke143, poke144, poke145, poke146, poke147, poke148, poke149, poke150, poke151];
 //TOTAL AMOUNT OF POKEMON
 counterTotal = allPoke.length;
+
+var x = window.matchMedia("(max-width: 700px)");
