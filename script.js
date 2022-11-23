@@ -19,8 +19,8 @@ function showImage(src) {
 }
 function mobilePokeImages(x, img) {
     if (x.matches) {
-        img.width = 200;
-        img.height = 200;
+        img.width = 350;
+        img.height = 350;
     }
     else {
         img.width = 300;
@@ -80,7 +80,7 @@ newPoke.addEventListener("click", function () {
 });
 function mobileFillerImage(x, fillerImg) {
     if (x.matches) {
-        fillerImg.setAttribute("style", "width: 200px; height: 200px; margin-left: auto; margin-right: auto");
+        fillerImg.setAttribute("style", "width: 350px; height: 350px; margin-left: auto; margin-right: auto");
     }
     else {
         fillerImg.setAttribute("style", "width: 300px; height: 300px; margin-left: auto; margin-right: auto");
