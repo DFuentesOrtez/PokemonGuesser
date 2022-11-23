@@ -3,12 +3,6 @@
     padding: 0;
 }
 
-@media (max-width: 800px) {
-    * {
-        overflow: hidden;
-    }
-}
-
 body {
     text-align: center;
     background-color: rgb(108, 128, 96);
