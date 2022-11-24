@@ -12,7 +12,6 @@ nav {
     padding: 10px;
     background-color: rgb(146, 173, 131);
     font-size: 22px;
-    font-family: 'Berlin Sans FB Demi', sans-serif;
 }
 
 #container {
@@ -64,4 +63,9 @@ input {
     height: 28px;
     width: 50px;
     border: solid black 1px;
+}
+
+#pointSection {
+    height: 25px;
+    padding: 10px;
 }
