@@ -457,7 +457,7 @@ poke151.value = "images/mew.png";
 
 
 //ARRAY OF ALL POKEMON
-var OriginalPokeArray = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9, poke10, poke11, poke12, poke13, poke14, poke15, poke16, poke17, poke18, poke19,
+var allPoke = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9, poke10, poke11, poke12, poke13, poke14, poke15, poke16, poke17, poke18, poke19,
     poke20, poke21, poke22, poke23, poke24, poke25, poke26, poke27, poke28, poke29, poke30, poke31, poke32, poke33, poke34, poke35, poke36, poke37,
     poke38, poke39, poke40, poke41, poke42, poke43, poke44, poke45, poke46, poke47, poke48, poke49, poke50, poke51, poke52, poke53, poke54, poke55,
     poke56, poke57, poke58, poke59, poke60, poke61, poke62, poke63, poke64, poke65, poke66, poke67, poke68, poke69, poke70, poke71, poke72, poke73,
@@ -467,7 +467,6 @@ var OriginalPokeArray = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8,
     poke125, poke126, poke127, poke128, poke129, poke130, poke131, poke132, poke133, poke134, poke135, poke136, poke137, poke138, poke139, poke140,
     poke141, poke142, poke143, poke144, poke145, poke146, poke147, poke148, poke149, poke150, poke151];
 
-var allPoke = OriginalPokeArray;
 
 const container = document.querySelector("#container");
 var currentPoke;
@@ -710,7 +709,15 @@ restart.addEventListener("click", function () {
     imgName.textContent = "";
     counter = 0;
     pokeProgress.replaceChildren();
-    allPoke = OriginalPokeArray;
+    allPoke = [poke1, poke2, poke3, poke4, poke5, poke6, poke7, poke8, poke9, poke10, poke11, poke12, poke13, poke14, poke15, poke16, poke17, poke18, poke19,
+        poke20, poke21, poke22, poke23, poke24, poke25, poke26, poke27, poke28, poke29, poke30, poke31, poke32, poke33, poke34, poke35, poke36, poke37,
+        poke38, poke39, poke40, poke41, poke42, poke43, poke44, poke45, poke46, poke47, poke48, poke49, poke50, poke51, poke52, poke53, poke54, poke55,
+        poke56, poke57, poke58, poke59, poke60, poke61, poke62, poke63, poke64, poke65, poke66, poke67, poke68, poke69, poke70, poke71, poke72, poke73,
+        poke74, poke75, poke76, poke77, poke78, poke79, poke80, poke81, poke82, poke83, poke84, poke85, poke86, poke87, poke88, poke89, poke90, poke91,
+        poke92, poke93, poke94, poke95, poke96, poke97, poke98, poke99, poke100, poke101, poke102, poke103, poke104, poke105, poke106, poke107, poke108,
+        poke109, poke110, poke111, poke112, poke113, poke114, poke115, poke116, poke117, poke118, poke119, poke120, poke121, poke122, poke123, poke124,
+        poke125, poke126, poke127, poke128, poke129, poke130, poke131, poke132, poke133, poke134, poke135, poke136, poke137, poke138, poke139, poke140,
+        poke141, poke142, poke143, poke144, poke145, poke146, poke147, poke148, poke149, poke150, poke151];
     initialPoke();
 
     pointSection.replaceChildren();
