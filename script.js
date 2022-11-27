@@ -564,6 +564,13 @@ function addPoint() {
     totalPoints.textContent = "Points: " + points;
     totalPoints.setAttribute("style", "font-size: 20px;");
     pointSection.appendChild(totalPoints);
+
+    if (points == 151) {
+        var perfectScore = document.createElement("p");
+        perfectScore.textContent = "Perfect Score!";
+        perfectScore.setAttribute("style", "font-size: 20px;");
+        pointSection.appendChild(perfectScore);
+    }
 }
 
 //ON PRESS, GENERATES NEW POKEMON AND REPLACES CURRENT(IF ANY) POKEMON IF THERE ARE ANY LEFT IN ARRAY
